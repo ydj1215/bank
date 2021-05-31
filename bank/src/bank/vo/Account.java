@@ -7,29 +7,29 @@ public class Account {
 	
 	public Account() {} //↓에 오버로딩을 했기 때문에 하나 넣어주자
 	
-	public Account(String id, String pwd)
+	public Account(String tid, String tPwd)
 	{
-		this.id=id;
-		this.pwd=pwd;
+		this.id=tid;
+		this.pwd=tPwd;
 		this.money = 0;
 	}
 	
 	public String getId() {
 		return id;
 	}
-	public void setId(String id) {
-		this.id = id;
+	public void setId(String tId) {
+		this.id = tId;
 	}
 	public String getPwd() {
 		return pwd;
 	}
-	public void setPwd(String pwd) {
-		this.pwd = pwd;
+	public void setPwd(String tPwd) {
+		this.pwd = tPwd;
 	}
 	public int getMoney() {
 		return money;
 	}
-	public void setMoney(int money) {
-		this.money = money;
+	public void setMoney(int tMoney) {
+		this.money = tMoney;
 	}
 }

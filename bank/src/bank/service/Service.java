@@ -36,4 +36,14 @@ public class Service {
 		// TODO Auto-generated method stub
 		return dao.query(id);
 	}
+
+	public boolean search(String id) {
+		// TODO Auto-generated method stub
+		return dao.search(id);
+	}
+
+	public int transfer(String id, String rId, int money) {
+		// TODO Auto-generated method stub
+		return dao.trasfer(id,rId,money);
+	}
 }

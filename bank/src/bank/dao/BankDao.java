@@ -221,7 +221,7 @@ public class BankDao {
 		}
 		catch(Exception e)
 		{
-			System.out.println("login error" +e);
+			System.out.println("query error" +e);
 		}
 		finally
 		{
@@ -229,5 +229,42 @@ public class BankDao {
 		}
 		
 		return money;
+	}
+	public boolean search(String id) {
+		// TODO Auto-generated method stub
+		boolean result = false;
+		Connection conn = null;
+		PreparedStatement pstmt = null;
+		ResultSet rs = null;
+		try
+		{
+			conn = connect();
+			pstmt = conn.prepareStatement("select id from account where id = ?;");
+			pstmt.setString(1,id);
+			rs = pstmt.executeQuery();
+			
+			if(rs.next())
+			{
+				result = true;
+			}
+		}
+		catch(Exception e)
+		{
+			System.out.println("search error" +e);
+		}
+		finally
+		{
+			close(conn,pstmt,rs);
+		}
+		
+		return result;
+	}
+	public int trasfer(String id, String rId, int money) {
+		// TODO Auto-generated method stub
+		int tMoney = this.withdrawal(id, money);
+		if(tMoney<0)
+			return tMoney;
+		this.deposit(rId, money); //rId에 money만큼
+		return tMoney;
 	}
 }

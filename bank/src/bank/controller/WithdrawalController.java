@@ -18,6 +18,7 @@ public class WithdrawalController implements Controller {
 		String id = (String)(request.getSession().getAttribute("id"));   //request.getSession()자체가 HttpSession이기 때문에 한꺼번에 처리
 		
 		int tMoney = Service.getInstance().withdrawal(id,money);
+		int Q = Service.getInstance().query(id);
 		if(tMoney < 0)
 		{
 			request.setAttribute("result", "Money is not enough");

@@ -13,7 +13,20 @@ public class QueryController implements Controller {
 	@Override
 	public void execute(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		// TODO Auto-generated method stub
+		
+		String path = null;
+		String job = request.getParameter("job");
+		if(job.equals("q"))
+		{
+			path = "/result/queryResult.jsp";
+		}
+		if(job.equals("w"))
+		{
+			path = "/withdrawal.jsp";
+		}
+
 		String id = (String)(request.getSession().getAttribute("id"));
+		
 		int money = 0;
 		if(id == null)
 		{
@@ -23,6 +36,6 @@ public class QueryController implements Controller {
 			money = Service.getInstance().query(id);
 		
 		request.setAttribute("money", money);
-		HttpUtil.forward(request, response, "/result/queryResult.jsp");
+		HttpUtil.forward(request, response, path);
 	}
 }

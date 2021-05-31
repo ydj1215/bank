@@ -20,14 +20,16 @@ public class FrontController extends HttpServlet{
 		map.put("/deposit.do", new DepositController());
 		map.put("/withdrawal.do", new WithdrawalController());
 		map.put("/query.do", new QueryController());
+		map.put("/search.do", new SearchController());
+		map.put("/transfer.do", new TransferController());
 	}
 	
 	@Override
 	protected void service(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
 		// TODO Auto-generated method stub
-		String url = req.getRequestURI();
+		String uri = req.getRequestURI();
 		String contextPath = req.getContextPath();
-		String path = url.substring(contextPath.length());
+		String path = uri.substring(contextPath.length());
 		
 		Controller cont = map.get(path);
 		cont.execute(req, resp);
